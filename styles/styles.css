@@ -44,16 +44,17 @@
   /* color scheme */
   color-scheme: light dark;
 
-  /* heritage palette */
-  --color-rust: #a14f2b;
-  --color-gold: #c5a059;
-  --color-parchment: #f5f2ed;
-  --color-ink: #1a1a1a;
+  /* WKND brand palette – "sunset & summit" */
+  --color-rust: #ff6b4a;        /* Sunset Coral – primary, CTAs, logo accent */
+  --color-gold: #f4a73b;        /* Golden Hour – highlight accent, gradients */
+  --color-parchment: #f5f2ea;   /* Fog White – warm light background */
+  --color-ink: #14110f;         /* Basalt Ink – primary text (light mode) */
+  --color-teal: #2fa8a0;        /* Summit Teal – secondary accent, links */
 
-  /* heritage dark palette */
-  --color-obsidian: #060d0d;
-  --color-card-dark: #162121;
-  --color-rust-bright: #d16a3e;
+  /* WKND dark palette */
+  --color-obsidian: #0c2a22;    /* Deep Pine – primary dark background */
+  --color-card-dark: #123a2f;   /* Card Pine – elevated dark surface */
+  --color-rust-bright: #e8532c; /* Trail Blaze – deep coral for hovers/gradients */
   --color-muted: #8b9a9a;
 
   /* color tokens – grays and palette */
@@ -109,15 +110,15 @@
   --color-light: rgb(255 255 255);
   --color-dark: rgb(0 0 0);
   --color-text: light-dark(var(--color-ink), var(--color-parchment));
-  --color-link: light-dark(var(--color-ink), var(--color-parchment));
+  --color-link: var(--color-teal);
   --color-link-hover: light-dark(var(--color-rust), var(--color-gold));
   --color-brand: var(--color-rust);
   --color-accent: var(--color-gold);
   --color-shaded: light-dark(var(--color-parchment), var(--color-card-dark));
 
-  /* fonts */
-  --font-family: montserrat, "Trebuchet MS", sans-serif;
-  --font-family-serif: "EB Garamond", georgia, serif;
+  /* fonts – Work Sans (body/labels), Oswald (display/headings) */
+  --font-family: "Work Sans", "Helvetica Neue", helvetica, sans-serif;
+  --font-family-serif: "Oswald", "Arial Narrow", sans-serif; /* display/heading font */
   --font-family-mono: "JetBrains Mono", "Courier New", monospace;
   --body-font-family: var(--font-family);
   --heading-font-family: var(--font-family-serif);
@@ -155,14 +156,14 @@
   --link-hover-color: var(--color-link-hover);
 
   /* heritage border */
-  --border-heritage: 2px solid light-dark(rgb(161 79 43 / 20%), rgb(245 242 237 / 20%));
+  --border-heritage: 2px solid light-dark(rgb(255 107 74 / 20%), rgb(245 242 234 / 20%));
   --border-radius-heritage: 24px;
 
   /* gradient and glow tokens */
   --gradient-brand: linear-gradient(135deg, var(--color-rust) 0%, var(--color-gold) 100%);
   --gradient-brand-dark: linear-gradient(135deg, var(--color-rust-bright) 0%, var(--color-gold) 100%);
-  --shadow-glow-rust: 0 0 40px rgb(161 79 43 / 30%);
-  --shadow-glow-gold: 0 0 40px rgb(197 160 89 / 25%);
+  --shadow-glow-rust: 0 0 40px rgb(255 107 74 / 30%);
+  --shadow-glow-gold: 0 0 40px rgb(244 167 59 / 25%);
   --shadow-lift-m: 0 20px 40px -8px rgb(0 0 0 / 15%);
   --shadow-lift-l: 0 30px 60px -12px rgb(0 0 0 / 22%);
   --shadow-card: 0 2px 8px rgb(0 0 0 / 5%), 0 1px 2px rgb(0 0 0 / 7%);
@@ -262,7 +263,7 @@ html {
 }
 
 ::selection {
-  background: light-dark(rgb(161 79 43 / 20%), rgb(197 160 89 / 30%));
+  background: light-dark(rgb(255 107 74 / 20%), rgb(244 167 59 / 30%));
   color: inherit;
 }
 
@@ -273,9 +274,9 @@ body {
   background-color: var(--background-color);
   background-image:
     radial-gradient(ellipse 80% 50% at 12% 8%,
-      light-dark(rgb(197 160 89 / 9%), rgb(197 160 89 / 4%)) 0%, transparent 60%),
+      light-dark(rgb(244 167 59 / 9%), rgb(244 167 59 / 4%)) 0%, transparent 60%),
     radial-gradient(ellipse 55% 40% at 88% 82%,
-      light-dark(rgb(161 79 43 / 6%), rgb(161 79 43 / 3%)) 0%, transparent 50%);
+      light-dark(rgb(255 107 74 / 6%), rgb(255 107 74 / 3%)) 0%, transparent 50%);
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -373,7 +374,7 @@ pre {
 
 :not(pre) > code {
   padding: 0.1em 0.35em;
-  background: rgb(161 79 43 / 10%);
+  background: rgb(255 107 74 / 10%);
   border-radius: 4px;
   color: var(--color-rust);
 }
@@ -396,7 +397,7 @@ a:any-link {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  text-decoration-color: light-dark(rgb(26 26 26 / 30%), rgb(245 242 237 / 30%));
+  text-decoration-color: light-dark(rgb(20 17 15 / 30%), rgb(245 242 234 / 30%));
   overflow-wrap: break-word;
 }
 
@@ -474,7 +475,7 @@ button.button:focus-visible {
   background-color: var(--color-gold);
   border-color: var(--color-gold);
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px light-dark(rgb(161 79 43 / 30%), rgb(209 106 62 / 35%)), 0 0 0 1px var(--color-gold);
+  box-shadow: 0 14px 30px light-dark(rgb(255 107 74 / 30%), rgb(232 83 44 / 35%)), 0 0 0 1px var(--color-gold);
   cursor: pointer;
   text-decoration: none;
 }
@@ -526,10 +527,10 @@ a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
   border-color: var(--color-gold);
-  background-color: light-dark(rgb(197 160 89 / 8%), rgb(197 160 89 / 12%));
+  background-color: light-dark(rgb(244 167 59 / 8%), rgb(244 167 59 / 12%));
   color: var(--color-gold);
   transform: translateY(-3px);
-  box-shadow: 0 14px 30px light-dark(rgb(197 160 89 / 18%), rgb(197 160 89 / 22%));
+  box-shadow: 0 14px 30px light-dark(rgb(244 167 59 / 18%), rgb(244 167 59 / 22%));
 }
 
 /* main content area – use design tokens for rhythm */
@@ -648,7 +649,7 @@ main > .section.rust * {
 
 main > .section.rust a:any-link {
   color: var(--color-parchment);
-  text-decoration-color: rgb(245 242 237 / 40%);
+  text-decoration-color: rgb(245 242 234 / 40%);
 }
 
 /* section-metadata style=gradient: warm brand gradient full-bleed section */
@@ -708,15 +709,15 @@ main > .section.warm {
   background-image:
     repeating-linear-gradient(
       45deg,
-      light-dark(rgb(161 79 43 / 4%), rgb(245 242 237 / 2%)) 0,
-      light-dark(rgb(161 79 43 / 4%), rgb(245 242 237 / 2%)) 1px,
+      light-dark(rgb(255 107 74 / 4%), rgb(245 242 234 / 2%)) 0,
+      light-dark(rgb(255 107 74 / 4%), rgb(245 242 234 / 2%)) 1px,
       transparent 1px,
       transparent 12px
     ),
     repeating-linear-gradient(
       -45deg,
-      light-dark(rgb(161 79 43 / 4%), rgb(245 242 237 / 2%)) 0,
-      light-dark(rgb(161 79 43 / 4%), rgb(245 242 237 / 2%)) 1px,
+      light-dark(rgb(255 107 74 / 4%), rgb(245 242 234 / 2%)) 0,
+      light-dark(rgb(255 107 74 / 4%), rgb(245 242 234 / 2%)) 1px,
       transparent 1px,
       transparent 12px
     );
